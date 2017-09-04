@@ -1,0 +1,86 @@
+JAVA JDBC
+Language: JAVA/JDBC
+Number of Questions: 10
+Duration: 2 hours
+
+Programming Assignment
+
+Objective
+Implement the JDBC API to establish a connection to the Oracle DB, and perform operations like insert/delete/update & display database result set.
+Requirements
+Name the package containing all of the classes for this section, “JavaAssignment_JDBC”. 
+
+Developer’s preference as far as collecting user input. 
+Go ahead and import the following, we will be using them for the program:
+import java.io.*; 
+import java.util.*;
+import java.sql.*;
+
+Activities
+For this assignment you will be creating a solution for a business that keeps a log of punch-in & out times for employees. You will be storing the employee information along with their clock-in-out times in the database.
+
+Schema
+
+Go ahead and create a Class called ‘Main’. Now create a main method that will build out the schema we will be working with. Connect to the database and execute the following query:
+Create a table called Employees, with the following columns:
+EmployeeNo  (NUMBER(10) NOT Null … This should be an auto-increment/IDENTITY column.  A unique ID should be generated automatically for each new employee. Make this the Primary Key) 
+firstName (VARCHAR(255))
+lastName (VARCHAR(255))
+time_in (VARCHAR(255))
+time_out (VARCHAR(255))
+(After you have successfully created the table you can comment that part out.)
+We will fill in the rest of this method later on.
+
+Employee Class
+Create an Employee class. Declare, but not initialize, four private String variables for the employee’s first name, last name, timeIn, and timeOut. Declare an integer variable for the employee number. 
+Create a constructor for this class that will take two Strings as parameters (the employee’s first and last name) and assign them to the initially declared variables: firstName & lastName.
+Create a method called createNewEmployee(). This method will establish a database connection, and insert the employee information into the database. Then execute a query to retrieve the employee number (automatically generated Unique ID) of the new employee and store it into the initially declared ‘employee number’ variable. Then print to the screen, 
+“ ‘Employee name’, your employee number is ‘employee number’. Use this number to clock in and out.” 
+After printing that to the screen, the method should then create a new InputCollector object and run the getEmployeeInput() method (Input collector mentioned later).
+Existing Employee Class
+ Create another class by extending the Employee class and call it ‘existingEmployee’. 
+Create a method called clockIn(). This method will take the employee number as a parameter.  It will then create a new date object, convert it to a string and store in into the ‘timeIn’ variable. Then establish a database connection and update the ‘time_in’ column for that employee with the ‘timeIn’ variable. Then perform a query to retrieve the employee’s information, using the employee number as a reference, and print to the screen …
+“ ‘firstName’, you’ve clocked in at ‘timeIn’ ”. 
+Create a clockOut() method that will take the employee number as a parameter, create a new date object, convert it to a string and store in into the ‘timeOut’ variable. Then establish a database connection and update the ‘time_out’ column for that employee. Then perform a query to retrieve the employee’s information, using the employee number as a reference, and print to the screen …
+“ ‘firstName’, you’ve clocked out at ‘timeOut’ ”. 
+Create a method called editInfo that will take the employee number as a parameter. Prompt the user to ‘Enter Updated First Name’, then ‘Enter Updated Last Name’ and assign the input collected to the firstName and lastName variables.  Establish a database connection, and update the ‘firstName’ and ‘lastName’ columns in the database using the employee number as a reference. Then print to the screen “Entry Successful, Your information has been updated”.
+Create a method called deleteEmployee that will take the employee number as a parameter. Establish a database connection, and execute a delete query in the database using the employee number as a reference. Then print to the screen 
+“Sorry to see you go, your information has been deleted”.
+Create a constructor that will accept two integer parameters. The first will be the employee number, this will be assigned to the ‘employee number’ variable, and the second parameter will correspond to a menu item from the inputCollector, (mentioned later):
+The menu items below are a part of the inputCollector Class, just here for your reference. 
+1- Clock In
+2- Clock out
+3- Edit Employee Information
+4- Delete Record
+5- Exit
+Set up the following conditions in your constructor:
+If the second parameter is ‘1’, run the clockIn method, passing in the emp. #
+If the second parameter is ‘2’, run the clockOut method, passing in the emp. #
+If the second parameter is ‘3’, run the editInfo method, passing in the emp. #
+If the second parameter is ‘4’, run the deleteEmployee method, passing in the emp. #
+If the second parameter is ‘5’, print to the screen “Copy that, Have a great one!
+Input Collector Class
+Create a class called inputCollector which will be responsible for collecting user input and sending it to the correct constructor. Declare two String variables: firstName & lastName. Declare two integer variables: employeeNo & menuItem. 
+Create a method called getEmployeeInput(). This method will prompt the employee to enter their employee number and assign the input to the ‘employee number’ variable. Then it should ask the employee … 
+“What would you like to do? Enter the corresponding number:
+1- Clock In
+2- Clock out
+3- Edit Employee Information
+4- Delete Record
+5- Exit
+The method should then collect the input and assign it to the ‘menuItem’ variable. Then create an ‘ExistingEmployee’ object, passing the employeeNo and menuItem into the constructor.
+Create a method called collectInput() that will collect the employee’s response to the following prompt: 
+“Good day! Are you a new or existing employee? Enter corresponding number:”
+1- New Employee
+2- Existing Employee
+If employee enters ‘1’, prompt the employee to enter their first name, and then their last name and assign the input to the initially declared ‘firstName’ and ‘lastName’ variables. Then create a new ‘Employee’ object passing the ‘firstName’, and ‘firstName’ variables into the constructor. Then call the createNewEmployee() method.
+If employee enters ‘2’, run the getEmployeeInput() method.
+Main Class
+Last one, promise! 
+Let’s revisit the ‘Main’ class we created earlier. 
+Inside the main method, create a new InputCollector object and call the collectInput() method. (The rest of that schema stuff you can leave commented out).
+Report Requirements:
+Please provide comments throughout your code.
+Hand In
+Submissions will be made in the JAVA/JDBC material GitHub repository.   
+
