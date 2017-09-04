@@ -4,8 +4,11 @@ import java.util.Date;
 
 public class existingEmployee extends Employee {
 
-	existingEmployee(String e_firstName, String e_lastName) {
-		super(e_firstName, e_lastName);
+	existingEmployee(int employeeNo, int menuItem) {
+		// super(employeeNo, menuItem);
+		super();
+
+		this.number = employeeNo;
 
 	}
 
@@ -18,9 +21,9 @@ public class existingEmployee extends Employee {
 		String curTime = date.toString();
 
 		setTimeIn(curTime);
-	
+
 	}
-	
+
 	void clockOut(int empNumber) {
 
 		// initialize current date
@@ -29,8 +32,8 @@ public class existingEmployee extends Employee {
 		// set the date equal to a string temporarily
 		String curTime = date.toString();
 
-		setTimeIn(curTime);
-	
+		setTimeOut(curTime);
+
 	}
 
 }
