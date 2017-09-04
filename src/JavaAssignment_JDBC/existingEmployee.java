@@ -4,10 +4,15 @@ import java.util.Date;
 
 public class existingEmployee extends Employee {
 
-	existingEmployee(int employeeNo, int menuItem) {
-		// super(employeeNo, menuItem);
+	public existingEmployee(int employeeNo) {
 		super();
+		this.number = employeeNo;
 
+	}
+
+	public existingEmployee(int employeeNo, int menuItem) {
+
+		super();
 		this.number = employeeNo;
 
 	}
